@@ -3,14 +3,15 @@ package com.github.fuelvin.game;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 
 public class Utils {
 	
-	public static String loadFileAsString(String path) {
+	public static String loadReaderAsString(Reader reader) {
 		StringBuilder builder = new StringBuilder();
 		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(path));
+			BufferedReader br = new BufferedReader(reader);
 			System.out.println("BR: " + br);
 			String line;
 			while((line = br.readLine()) != null){

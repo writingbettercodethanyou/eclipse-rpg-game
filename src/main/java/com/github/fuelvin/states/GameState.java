@@ -1,6 +1,7 @@
 package com.github.fuelvin.states;
 
 import java.awt.Graphics;
+import java.io.InputStreamReader;
 
 import com.github.fuelvin.assets.Description;
 import com.github.fuelvin.assets.Player;
@@ -20,7 +21,10 @@ public class GameState extends State{
 
 	public GameState(Handler handler) {
 		super(handler); //calls constructor of "State" class
-		world = new World(handler, "res/worlds/world1.txt");
+
+		String path = "worlds/world1.txt";
+		System.out.println(path);
+		world = new World(handler, new InputStreamReader(getClass().getResourceAsStream(path)));
 		handler.setWorld(world);
 		playerDescription = new Description(2, Player.name, Player.health, Player.baseHealth, Player.level, handler);
 		

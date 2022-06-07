@@ -1,6 +1,10 @@
 package com.github.fuelvin.game;
 
 import java.awt.Graphics;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 
 import com.github.fuelvin.assets.EntityManager;
@@ -19,11 +23,11 @@ public class World {
 	private EntityManager entityManager;
 
 	
-	public World(Handler handler, String path) {
+	public World(Handler handler, Reader reader) {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
-		
-		loadWorld(path);
+
+		loadWorld(reader);
 		
 		entityManager.getPlayer().setX(spawnX * Tile.TILEWIDTH + 10);
 		entityManager.getPlayer().setY(spawnY * Tile.TILEHEIGHT + 16);
@@ -83,9 +87,8 @@ public class World {
 		return t;
 	}
 	
-	private void loadWorld(String path) {
-		System.out.println(path);
-		String file = Utils.loadFileAsString(path);
+	private void loadWorld(Reader reader) {
+		String file = Utils.loadReaderAsString(reader);
 		System.out.println(file);
 		String[] tokens = file.split("\\s+");
 		width = Utils.parseInt(tokens[0]);
