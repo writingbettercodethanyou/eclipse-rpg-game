@@ -1,4 +1,6 @@
-package com.github.fuelvin.game;
+package com.github.fuelvin;
+
+import com.github.fuelvin.game.Game;
 
 public class Launcher{
 	public static void main(String[] args) {
