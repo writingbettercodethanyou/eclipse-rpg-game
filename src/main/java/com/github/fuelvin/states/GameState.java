@@ -22,7 +22,7 @@ public class GameState extends State{
 	public GameState(Handler handler) {
 		super(handler); //calls constructor of "State" class
 
-		String path = "worlds/world1.txt";
+		String path = "/worlds/world1.txt";
 		System.out.println(path);
 		world = new World(handler, new InputStreamReader(getClass().getResourceAsStream(path)));
 		handler.setWorld(world);
